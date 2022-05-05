@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+{% include 'users/slidebar.html' %}
+
+{% for project in project_list %} 
+        <div class="card">
+            <div class="card-header">
+                Project Number: {{ project.projectNumber }}                 
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">Project name: {{ project.name }}</h5>
+                <p class="card-text">
+                    <table class="table table-hover">
+                        <tr>
+                            <th>Date</th>
+                            <th>Area(s)</th>
+                            <th>Ward(s)</th>        
+                            <th> Proggress Desprition</th>
+                            <th>% Completed</th>
+                        </tr>
+                        <tr> 
+                            <td>  {{ project.start_date }}</td>               
+                            <td>  {{ project.area }}</td>
+                            <td>  {{ project.ward}}</td>                
+                            <td>  {{ project.progress }}</td>
+                            <td>  {{ project.complete }}</td>
+                        </tr>
+                    </table>
+                    
+                </p>
+            </div> 
+            <div class="card-footer text-muted"> 
+                <div class="row">
+                    <div class="col-sm-2" id="viewcomment" >
+                      <a href="" 
+                      class="btn btn-outline-primary btn-sm" >
+                          All Comments</a>
+                    </div>
+                
+                    <div class="col-sm-8" id="comment"  >
+                      <textarea id="txtarea" placeholder="Enter your comment here !!!!"></textarea>
+                    </div>
+                    <div class="col-sm-2" id="sentcomment" >
+                      <button type="button" class="btn btn-success">Send</button>
+                    </div>
+                </div>
+            </div>
+          
+        <br/>
+        
+   {% endfor %}     
+
+{% endblock%}
